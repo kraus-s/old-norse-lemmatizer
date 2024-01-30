@@ -1,0 +1,1 @@
+OLD_NORSE_CORPUS_FILES = "data/"
