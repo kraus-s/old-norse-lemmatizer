@@ -135,7 +135,7 @@ model.fit(X_train_vec, y_train_enc, epochs=50, verbose=False, validation_data=(X
 print("Done!")
 
 
-loss, accuracy = model.evaluate(X_test, y_test_enc)
+loss, accuracy = model.evaluate(X_test_vec, y_test_enc)
 print(f'Test Loss: {loss}')
 print(f'Test Accuracy: {accuracy}')
 model.save("test-run-1.mdl")
