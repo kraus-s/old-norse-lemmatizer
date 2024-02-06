@@ -15,8 +15,7 @@ keras-nlp = "*"
 tensorflow = "*"
 numpy = "*"
 seaborn = "*"
+gensim = "*"
+streamlit = "*"
 
 [dev-packages]
-
-[requires]
-python_version = "3.11"
