@@ -333,7 +333,8 @@ def para_parse(soup, current_manuscript: ParallelizedNorseDoc) -> ParallelizedNo
 
 def get_parallelized_text(input_file: str) -> ParallelizedNorseDoc:
     print("Parsing parallelized text...")
-    soup = read_tei(input_file)
+    entity_dict = download_and_parse_entities("http://www.menota.org/menota-entities.txt")
+    soup = read_tei(input_file, entity_dict)
     ms_sig, txt_name = get_menota_info(soup)
     current_manuscript = ParallelizedNorseDoc(name=txt_name, manuscript=ms_sig)
     current_manuscript = para_parse(soup=soup, current_manuscript=current_manuscript)

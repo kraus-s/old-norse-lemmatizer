@@ -1,7 +1,7 @@
-import importer as importer
+import src.importer as importer
 import numpy as np
 from gensim.models import Word2Vec
-from menota_parser import NorseDoc, token
+from src.menota_parser import NorseDoc, token
 from collections import defaultdict
 from keras.layers import LSTM, Embedding, Dense, Dropout
 from keras.models import Sequential
@@ -9,7 +9,7 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
 from numpy import argmax
 from sklearn.metrics import classification_report
-from config import *
+from src.config import *
 import pandas as pd
 import pickle
 import random
@@ -35,7 +35,6 @@ def vectorize_doc_list(docs_list: list[list[str]], min_occurence: int = 1):
     print(f"Training word2vec on {sum([len(x) for x in docs_list])} tokens")
     # docs_list_windowed = [sublist[i:i+500] for sublist in docs_list for i in range(0, len(sublist), 500)]
     vectorized_model = Word2Vec(docs_list, min_count=min_occurence, window=5, workers=8, vector_size=VECTOR_SPACE, epochs=30)
-    import pdb; pdb.set_trace()
     return vectorized_model
 
 
@@ -251,7 +250,8 @@ if __name__ == "__main__":
 
     # Save the DataFrame to a CSV file
     report_df.to_csv('classification_report.csv', index=True)
+    model.save(LEMMATIZER_MODEL)
     # Try it out
     print("Trying out the model")
     _test_model_apply(model, all_norms_list, word_index, lemma_index, ambiguous_forms)
-    model.save(LEMMATIZER_MODEL)
+    

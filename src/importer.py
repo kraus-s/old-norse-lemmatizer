@@ -1,6 +1,6 @@
-import menota_parser as menota_parser
-from menota_parser import NorseDoc, token
-from config import *
+import src.menota_parser as menota_parser
+from src.menota_parser import NorseDoc, token
+from src.config import *
 import glob
 import random
 from sklearn.model_selection import train_test_split
